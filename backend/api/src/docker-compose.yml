@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web02:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8002"
+    container_name: "django02"
+    volumes:
+      - "/home/abraham_zaragoza/final-project/backend/api/src:/usr/src/django/musicapi"
+    ports:
+      - "9002:8002"
+    networks:
+      - our-library-net
+networks:
+  our-library-net:
+    external: true
+    driver: bridge
