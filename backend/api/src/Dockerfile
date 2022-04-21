@@ -11,3 +11,5 @@ WORKDIR /usr/src/django/musicapi
 ADD . /usr/src/django/musicapi
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
+# Save new req
+RUN pip freeze > requirements.txt
