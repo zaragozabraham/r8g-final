@@ -86,10 +86,21 @@ WSGI_APPLICATION = 'musicapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.get('PSQL_DBNAME'),
+        'USER': env.get('PSQL_USERNAME'),
+        'PASSWORD': env.get('PSQL_PASS'),
+        'HOST': env.get('PSQL_HOST'),
+        'PORT': env.get('PSQL_PORT'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [],
