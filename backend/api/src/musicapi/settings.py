@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'musicapi.users',
     'musicapi.genres',
+    'musicapi.artists',
 ]
 
 MIDDLEWARE = [
