@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'musicapi.genres',
     'musicapi.artists',
     'musicapi.songs',
+    'musicapi.albums',
 ]
 
 MIDDLEWARE = [
