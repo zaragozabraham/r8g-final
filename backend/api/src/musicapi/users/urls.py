@@ -3,8 +3,9 @@ from rest_framework import routers
 from django.urls import path, include
 
 router = routers.DefaultRouter()
-router.register(r'', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'address', views.AdressViewSet)
+router.register(r'', views.UserViewSet)
 
 urlpatterns = [
 	path('login', views.LoginView.as_view()),

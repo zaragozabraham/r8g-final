@@ -1,22 +1,29 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User
+from musicapi.users.models import User, Address
 
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework import permissions
-from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer
+from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer, AddressSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = []
     # permission_classes = [permissions.IsAuthenticated]
+
+    def retrieve(self, request, pk=None):
+        user_queryset = User.objects.filter(id = pk)
+        serializer = UserSerializer(user_queryset)
+        return Response(serializer.data)
+
+class AdressViewSet(viewsets.ModelViewSet):
+    queryset = Address.objects.all().order_by('id')
+    serializer_class = AddressSerializer
+    permission_classes = []
 
 class LoginView(APIView):
     def post(self, request):
@@ -51,9 +58,6 @@ class LogoutView(GenericAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     #permission_classes = [permissions.IsAuthenticated]
