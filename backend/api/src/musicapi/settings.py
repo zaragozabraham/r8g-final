@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'musicapi.users',
     'musicapi.genres',
     'musicapi.artists',
+    'musicapi.songs',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'musicapi.urls'
 
 AUTH_USER_MODEL = 'users.User'
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 TEMPLATES = [
     {
