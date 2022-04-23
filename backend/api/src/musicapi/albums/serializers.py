@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 
 class AlbumSerializer(serializers.ModelSerializer):
+    userAlbums = serializers.StringRelatedField(many=True, read_only=True)
     # albumGenres = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Album
@@ -12,5 +13,9 @@ class AlbumSerializer(serializers.ModelSerializer):
             'physicalStock',
             'physicalPrice', 
             'digitalPrice', 
-            'image'
+            'image',
+            'genres',
+            'artists',
+            'songs',
+            'userAlbums'
             ]

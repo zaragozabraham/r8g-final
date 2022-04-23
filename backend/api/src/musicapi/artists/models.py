@@ -6,3 +6,4 @@ class Artist(models.Model):
     name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128, blank=True, default='')
     nationality = models.CharField(max_length=64)
+    image = models.TextField(null=False)

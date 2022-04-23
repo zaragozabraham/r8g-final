@@ -1,4 +1,6 @@
 from django.db import models
+from musicapi.artists.models import Artist
+from django.core.validators import MaxValueValidator, MinValueValidator
 import uuid
 
 def duration_string(duration):
@@ -27,4 +29,6 @@ class Song(models.Model):
     duration = CustomDurationField(default='')
     releaseDate = models.DateField(null=True)
     audioFile = models.TextField(null=False)
+    artists = models.ForeignKey(Artist, related_name='songArtists', on_delete=models.CASCADE)
+    digitalPrice = models.FloatField(null=False, validators=[MinValueValidator(0.0), MaxValueValidator(2000.0)])
     # Add prices and type

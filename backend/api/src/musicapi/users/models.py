@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from musicapi.albums.models import Album
+from musicapi.songs.models import Song
 import uuid
 
 
@@ -7,6 +9,8 @@ class User(AbstractUser):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	email = models.CharField(max_length=255, unique=True)
 	username = models.CharField(max_length=255, unique=True)
+	ownedAlbums = models.ForeignKey(Album, related_name='userAlbums', on_delete=models.CASCADE)
+	ownedSongs = models.ForeignKey(Song, related_name='userSongs', on_delete=models.CASCADE)
 
 	class Type(models.IntegerChoices):
 		CUSTOMER = 1

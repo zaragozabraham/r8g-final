@@ -1,5 +1,8 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from musicapi.genres.models import Genre
+from musicapi.artists.models import Artist
+from musicapi.songs.models import Song
 import uuid
 
 class Album(models.Model):
@@ -11,6 +14,6 @@ class Album(models.Model):
     physicalPrice = models.FloatField(null=False, validators=[MinValueValidator(0.0), MaxValueValidator(2000.0)])
     digitalPrice = models.FloatField(null=False, validators=[MinValueValidator(0.0), MaxValueValidator(2000.0)])
     image = models.TextField(null=False)
-    # genres = models.ForeignKey(Genre, related_name='albumGenres', on_delete=models.CASCADE)
-    # artists
-    # songs
+    genres = models.ForeignKey(Genre, related_name='albumGenres', on_delete=models.CASCADE)
+    artists = models.ForeignKey(Artist, related_name='albumArtists', on_delete=models.CASCADE)
+    songs = models.ForeignKey(Song, related_name='albumSongs', on_delete=models.CASCADE)
