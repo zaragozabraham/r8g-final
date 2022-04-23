@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 def duration_string(duration):
     days = duration.days
@@ -21,6 +22,7 @@ class CustomDurationField(models.DurationField):
         return value
 
 class Song(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
     duration = CustomDurationField(default='')
     releaseDate = models.DateField(null=True)

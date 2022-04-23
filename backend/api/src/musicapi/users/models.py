@@ -4,6 +4,7 @@ import uuid
 
 
 class User(AbstractUser):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	email = models.CharField(max_length=255, unique=True)
 	username = models.CharField(max_length=255, unique=True)
 
