@@ -1,5 +1,6 @@
 from django.db import models
 from musicapi.artists.models import Artist
+from musicapi.albums.models import Album
 from django.core.validators import MaxValueValidator, MinValueValidator
 import uuid
 
@@ -29,6 +30,10 @@ class Song(models.Model):
     duration = CustomDurationField(default='')
     releaseDate = models.DateField(null=True)
     audioFile = models.TextField(null=False)
-    artists = models.ForeignKey(Artist, related_name='songArtists', on_delete=models.CASCADE)
     digitalPrice = models.FloatField(null=False, validators=[MinValueValidator(0.0), MaxValueValidator(2000.0)])
-    # Add prices and type
+    artists = models.ForeignKey(Artist, related_name='songArtists', on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, related_name='songsAlbum', on_delete=models.CASCADE)
+    # Change to ManyToMany { artists }
+        
+    def __str__(self):
+        return f'{self.name}'
