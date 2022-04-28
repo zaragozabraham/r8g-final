@@ -9,8 +9,8 @@ class User(AbstractUser):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	email = models.CharField(max_length=255, unique=True)
 	username = models.CharField(max_length=255, unique=True)
-	ownedAlbums = models.ForeignKey(Album, related_name='userAlbums', on_delete=models.CASCADE, blank=True, null=True)
-	ownedSongs = models.ForeignKey(Song, related_name='userSongs', on_delete=models.CASCADE, blank=True, null=True)
+	# ownedAlbums = models.ForeignKey(Album, related_name='userAlbums', on_delete=models.CASCADE, blank=True, null=True)
+	# ownedSongs = models.ForeignKey(Song, related_name='userSongs', on_delete=models.CASCADE, blank=True, null=True)
 
 	class Type(models.IntegerChoices):
 		CUSTOMER = 1
@@ -39,3 +39,14 @@ class Address(models.Model):
 	
 	def __str__(self):
 		return f'{self.addres_line}'
+
+class OwnedSongs(models.Model):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	user = models.ForeignKey(User, related_name='ownedSongsUser', on_delete=models.CASCADE)
+	songs = models.ManyToManyField(Song, related_name='ownedSongsSongs')
+
+class Playlist(models.Model):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	name = models.CharField(max_length=128)
+	user = models.ForeignKey(User, related_name='userPlaylist', on_delete=models.CASCADE)
+	songs = models.ManyToManyField(Song, related_name='songsPlaylist')

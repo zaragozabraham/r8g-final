@@ -1,11 +1,11 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User, Address
+from musicapi.users.models import User, Address, OwnedSongs, Playlist
 
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework import permissions
-from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer, AddressSerializer
+from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer, AddressSerializer, OwnedSongsSerializer, PlaylistSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -24,6 +24,27 @@ class AdressViewSet(viewsets.ModelViewSet):
     queryset = Address.objects.all().order_by('id')
     serializer_class = AddressSerializer
     permission_classes = []
+
+class OwnedSongsViewSet(viewsets.ModelViewSet):
+    queryset = OwnedSongs.objects.all().order_by('id')
+    serializer_class = OwnedSongsSerializer
+    permission_classes = []
+
+    def get(self, request):
+        userId = request.data['user']
+
+        owned = OwnedSongs.objects.filter(user=userId).all()
+
+class PlaylistViewSet(viewsets.ModelViewSet):
+    queryset = Playlist.objects.all().order_by('id')
+    serializer_class = PlaylistSerializer
+    permission_classes = []
+
+    def get(self, request):
+        userId = request.data['user']
+
+        playlist = Playlist.objects.filter(user=userId).all()
+
 
 class LoginView(APIView):
     def post(self, request):

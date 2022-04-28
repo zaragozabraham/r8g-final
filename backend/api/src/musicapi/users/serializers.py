@@ -1,5 +1,5 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User, Address
+from musicapi.users.models import User, Address, OwnedSongs, Playlist
 
 
 from rest_framework import serializers
@@ -32,15 +32,19 @@ class UserSerializer(serializers.ModelSerializer):
         return make_password(value)
     
     addresses = serializers.StringRelatedField(many=True, read_only=True)
+    ownedSongsUser = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'email', 'type', 'addresses', 'ownedAlbums', 'ownedSongs', 'groups']
+        fields = ['id', 'username', 'password', 'email', 'type', 'addresses', 'ownedSongsUser', 'userPlaylist', 'groups']
          # Changes password to write only, user never be able to access it
         extra_kwargs = {
             'email': {'required': True},
             'password': {'write_only': True},
+            'ownedSongsUser': {'required': False},
+            'userPlaylist': {'required': False}
         }
+        depth = 1
 
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -63,3 +67,19 @@ class AddressSerializer(serializers.ModelSerializer):
             'zipCode',
             'default',
             ]
+
+class OwnedSongsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OwnedSongs
+        fields = ['id', 'user', 'songs']
+        extra_kwargs = {
+            'songs': {'required': False}
+        }
+
+class PlaylistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Playlist
+        fields = ['id', 'name', 'user']
+        extra_kwargs = {
+            'songs': {'required': False}
+        }
