@@ -1,5 +1,5 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User, Address, OwnedSongs, Playlist
+from musicapi.users.models import User, Address, OwnedSongs, Playlist, SongOwned, SongPlaylist
 
 
 from rest_framework import serializers
@@ -32,7 +32,6 @@ class UserSerializer(serializers.ModelSerializer):
         return make_password(value)
     
     addresses = serializers.StringRelatedField(many=True, read_only=True)
-    ownedSongsUser = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
@@ -71,15 +70,25 @@ class AddressSerializer(serializers.ModelSerializer):
 class OwnedSongsSerializer(serializers.ModelSerializer):
     class Meta:
         model = OwnedSongs
-        fields = ['id', 'user', 'songs']
+        fields = ['id', 'user', 'ownedListID']
         extra_kwargs = {
-            'songs': {'required': False}
+            'ownedListID': {'required': False},
         }
 
 class PlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Playlist
-        fields = ['id', 'name', 'user']
+        fields = ['id', 'name', 'user', 'playlistID']
         extra_kwargs = {
-            'songs': {'required': False}
+            'playlistID': {'required': False},
         }
+
+class SongOwnedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SongOwned
+        fields = ['id', 'ownedID', 'songID']
+
+class SongPlaylistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SongPlaylist
+        fields = ['id', 'playlistID', 'songID']

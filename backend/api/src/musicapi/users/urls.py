@@ -7,6 +7,8 @@ router.register(r'groups', views.GroupViewSet)
 router.register(r'address', views.AdressViewSet)
 router.register(r'ownedSongs', views.OwnedSongsViewSet)
 router.register(r'playlists', views.PlaylistViewSet)
+router.register(r'songOwned', views.SongOwnedViewSet)
+router.register(r'songPlaylist', views.SongPlaylistViewSet)
 router.register(r'', views.UserViewSet)
 
 urlpatterns = [

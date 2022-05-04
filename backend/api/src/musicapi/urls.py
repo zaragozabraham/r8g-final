@@ -17,7 +17,7 @@ urlpatterns = [
 schema_view = get_schema_view(
    openapi.Info(
       title="MusicStore API",
-      default_version='v1',
+      default_version='v1.2.0',
       description="Music Store API",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="contact@musicstore.com"),

@@ -1,11 +1,11 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User, Address, OwnedSongs, Playlist
+from musicapi.users.models import User, Address, OwnedSongs, Playlist, SongOwned, SongPlaylist
 
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework import permissions
-from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer, AddressSerializer, OwnedSongsSerializer, PlaylistSerializer
+from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer, AddressSerializer, OwnedSongsSerializer, PlaylistSerializer, SongOwnedSerializer, SongPlaylistSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -30,20 +30,32 @@ class OwnedSongsViewSet(viewsets.ModelViewSet):
     serializer_class = OwnedSongsSerializer
     permission_classes = []
 
-    def get(self, request):
-        userId = request.data['user']
-
-        owned = OwnedSongs.objects.filter(user=userId).all()
-
 class PlaylistViewSet(viewsets.ModelViewSet):
-    queryset = Playlist.objects.all().order_by('id')
+    queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
     permission_classes = []
 
-    def get(self, request):
-        userId = request.data['user']
+class SongOwnedViewSet(viewsets.ModelViewSet):
+    queryset = SongOwned.objects.all()
+    serializer_class = SongOwnedSerializer
+    permission_classes = []
 
-        playlist = Playlist.objects.filter(user=userId).all()
+class SongPlaylistViewSet(viewsets.ModelViewSet):
+    queryset = SongPlaylist.objects.all()
+    serializer_class = SongPlaylistSerializer
+    permission_classes = []
+
+    # def create(self, request, *args, **kwargs):
+    #     req_data = request.data
+    #     req_song = req_data['songs']
+    #     owned = OwnedSongs.objects.filter(user=req_data['user'], songs=req_data['songs'])
+    #     print(owned)
+    #     if owned is None:
+    #         raise_exception
+    #     else:
+    #         newSong = Playlist.objects.filter(user=req_data['user']).add()
+        
+
 
 
 class LoginView(APIView):

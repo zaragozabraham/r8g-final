@@ -7,4 +7,4 @@ from django.shortcuts import redirect
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-    permissions_classes = []
+    permission_classes = (permissions.IsAuthenticated, )
