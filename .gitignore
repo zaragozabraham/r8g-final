@@ -1,2 +1,3 @@
-**/__pycache__/i
+**/__pycache__/
+**/migrations/
 **/.DS_Store
