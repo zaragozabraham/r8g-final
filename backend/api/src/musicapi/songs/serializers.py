@@ -5,8 +5,9 @@ class SongSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Song
-        fields = ['id', 'name', 'duration', 'releaseDate', 'audioFile', 'digitalPrice', 'artists', 'album', 'ownedSongID', 'playlistSongID']
+        fields = ['id', 'name', 'duration', 'releaseDate', 'audioFile', 'digitalPrice', 'artists', 'album', 'ownedSongID', 'playlistSongID', 'orderSongID']
         extra_kwargs = {
             'ownedSongID':{'required': False},
-            'playlistSongID':{'required': False}
+            'playlistSongID':{'required': False},
+            'orderSongID':{'required': False}
             }

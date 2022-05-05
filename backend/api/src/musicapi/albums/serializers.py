@@ -18,5 +18,7 @@ class AlbumSerializer(serializers.ModelSerializer):
             'image',
             'genres',
             'artists',
-            'songsAlbum'
+            'songsAlbum',
+            'ownedAlbumsID',
+            'orderAlbumID'
             ]

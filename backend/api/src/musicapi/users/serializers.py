@@ -1,5 +1,5 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User, Address, OwnedSongs, Playlist, SongOwned, SongPlaylist
+from musicapi.users.models import *
 
 
 from rest_framework import serializers
@@ -32,16 +32,19 @@ class UserSerializer(serializers.ModelSerializer):
         return make_password(value)
     
     addresses = serializers.StringRelatedField(many=True, read_only=True)
+    ownedAlbumsUser = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'email', 'type', 'addresses', 'ownedSongsUser', 'userPlaylist', 'groups']
+        fields = ['id', 'username', 'password', 'email', 'mode', 'addresses', 'ownedSongsUser', 'userPlaylist', 'ownedAlbumsUser', 'userOrders', 'groups']
          # Changes password to write only, user never be able to access it
         extra_kwargs = {
             'email': {'required': True},
             'password': {'write_only': True},
             'ownedSongsUser': {'required': False},
-            'userPlaylist': {'required': False}
+            'userPlaylist': {'required': False},
+            'ownedAlbumsUser': {'required': False},
+            'userOrders': {'required': False},
         }
         depth = 1
 
@@ -92,3 +95,35 @@ class SongPlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = SongPlaylist
         fields = ['id', 'playlistID', 'songID']
+
+class OwnedAlbumsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OwnedAlbums
+        fields = ['id', 'user', 'ownedAlbums']
+        extra_kwargs = {
+            'ownedAlbums': {'required': False},
+        }
+
+class AlbumOwnedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AlbumOwned
+        fields = ['id', 'ownedAlbumsID', 'albumID']
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['id', 'user', 'orderAlbums', 'orderSongs']
+        extra_kwargs = {
+            'orderAlbums': {'required': False},
+            'orderSongs': {'required': False},
+        }
+
+class OrderAlbumSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderAlbum
+        fields = ['id', 'userOrderID', 'albumID']
+
+class OrderSongSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderSong
+        fields = ['id', 'userOrderID', 'songID']

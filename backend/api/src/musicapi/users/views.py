@@ -1,11 +1,11 @@
 from django.contrib.auth.models import Group
-from musicapi.users.models import User, Address, OwnedSongs, Playlist, SongOwned, SongPlaylist
+from musicapi.users.models import *
 
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework import permissions
-from musicapi.users.serializers import UserSerializer, RefreshTokenSerializer, GroupSerializer, AddressSerializer, OwnedSongsSerializer, PlaylistSerializer, SongOwnedSerializer, SongPlaylistSerializer
+from musicapi.users.serializers import *
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -30,6 +30,16 @@ class OwnedSongsViewSet(viewsets.ModelViewSet):
     serializer_class = OwnedSongsSerializer
     permission_classes = []
 
+class OwnedAlbumsViewSet(viewsets.ModelViewSet):
+    queryset = OwnedAlbums.objects.all()
+    serializer_class = OwnedAlbumsSerializer
+    permission_classes = []
+
+class AlbumOwnedViewSet(viewsets.ModelViewSet):
+    queryset = AlbumOwned.objects.all()
+    serializer_class = AlbumOwnedSerializer
+    permission_classes = []
+
 class PlaylistViewSet(viewsets.ModelViewSet):
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
@@ -43,6 +53,21 @@ class SongOwnedViewSet(viewsets.ModelViewSet):
 class SongPlaylistViewSet(viewsets.ModelViewSet):
     queryset = SongPlaylist.objects.all()
     serializer_class = SongPlaylistSerializer
+    permission_classes = []
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = []
+
+class OrderAlbumViewSet(viewsets.ModelViewSet):
+    queryset = OrderAlbum.objects.all()
+    serializer_class = OrderAlbumSerializer
+    permission_classes = []
+
+class OrderSongViewSet(viewsets.ModelViewSet):
+    queryset = OrderSong.objects.all()
+    serializer_class = OrderSongSerializer
     permission_classes = []
 
     # def create(self, request, *args, **kwargs):
