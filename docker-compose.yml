@@ -17,7 +17,7 @@ services:
     command: "-p 5502"
 
   web02:
-    build: .
+    build: ./backend/api/src
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8002"
     container_name: "django02"
     depends_on: 
@@ -36,6 +36,20 @@ services:
       - "9002:8002"
     networks:
       - our-library-net
+    
+  front02:
+    build: ./front/raven-music
+    command: sh -c "yarn install && yarn start"
+    container_name: react02
+    volumes:
+      - "/home/abraham_zaragoza/final-project/front/raven-music:/app"
+    ports:
+      - 11002:11002
+    stdin_open: true
+    tty: true
+    networks:
+      - our-library-net
+
 networks:
   our-library-net:
     external: true
