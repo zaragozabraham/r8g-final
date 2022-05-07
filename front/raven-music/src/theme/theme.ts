@@ -9,9 +9,37 @@ export const theme = createTheme({
       contrastText: '#017AFF',
     },
     text: {
+      primary: '#fff',
       secondary: '#8D9295'
     }
   },
+  typography: {
+    fontFamily: [
+      'Montserrat'
+    ].join(',')
+  },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          field: {
+            backgroundColor: "#33393f",
+            border: "none",
+            borderRadius: "3rem",
+          },
+          "& placeholder": {
+            color: `white`
+          },
+          "& label": {
+            color: `white`
+          },
+          "& legend": {
+            color: `white`
+          },
+        }
+      }
+    }
+  }
 });
 
 export type AppTheme = typeof theme;

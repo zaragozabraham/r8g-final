@@ -1,8 +1,19 @@
 #root {
     height: 100%;
-    display: grid;
-    grid-template-columns: 14vw auto;
+    /* display: grid;
+    grid-template-columns: 14vw auto; */
 }
-.css-1nadmmg-MuiButtonBase-root-MuiListItemButton-root.Mui-selected {
-    background-color: rgba(50, 25, 30);
+
+/* I hope Hugo doesn't cry when he sees !important */
+.Mui-selected {
+    color: #017AFF !important;
+}
+
+.search-bar {
+    background-color: rgba(121, 122, 147, 0.1) !important;
+    border-radius: 15px;
+}
+
+.MenuList {
+    background-color: #2B1E22;
 }

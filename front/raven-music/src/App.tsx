@@ -1,20 +1,43 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import SideMenu from './components/side_menu/component';
 import DiscoverView from './views/discover/component';
 import AlbumsView from './views/albums/component';
 import SongsView from './views/songs/component';
+import { Box } from '@mui/material';
+import { Styles } from './theme/types';
+import { useMemo } from 'react';
+import HeaderNavBar from './components/navbar/component';
 
 const App = () => {
+  const location = useLocation();
+  const haveBar = useMemo(() => location.pathname !== "/login", [location]);
+  
+  const styles: Styles = {
+    root: {
+      display: "grid",
+      height: "100%",
+      gridTemplateColumns: haveBar ? { xs: '50px auto', md: "200px auto"} : "auto",
+    },
+    container: {
+      display: "flex",
+      flexDirection: "column",
+      overflow: "hidden",
+    },
+  };
+  
   return (
-    <>
-      <SideMenu />
-      <Routes>
-        <Route path="/" element={<DiscoverView />} />
-        <Route path="/albums" element={<AlbumsView />} />
-        <Route path="/songs" element={<SongsView />} />
-      </Routes>
-    </>
+    <Box sx={ styles.root }>
+      {haveBar && <SideMenu />}
+      <Box sx={ styles.container }>
+        <HeaderNavBar />
+        <Routes>
+          <Route path="/" element={<DiscoverView />} />
+          <Route path="/albums" element={<AlbumsView />} />
+          <Route path="/songs" element={<SongsView />} />
+        </Routes>
+      </Box>
+    </Box>
   )
 }
 

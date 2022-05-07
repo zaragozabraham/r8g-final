@@ -10,30 +10,31 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import AlbumIcon from "@mui/icons-material/Album";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SideMenu = () => {
     const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     const MenuButtons: NavButton[] = useMemo(
         () => [
             {
                 text: "Discover",
                 icon: <ExploreIcon />,
-                onClick: () => navigate("/")
+                path: "/"
             },
             {
                 text: "Albums",
                 icon: <LibraryMusicIcon />,
-                onClick: () => navigate("/albums")
+                path: "/albums"
             },
             {
                 text: "Songs",
                 icon: <MusicNoteIcon />,
-                onClick: () => navigate("/songs")
+                path: "/songs"
             },
         ],
-        [navigate]
+        []
     );
 
     const LibraryButtons: NavButton[] = useMemo(
@@ -41,17 +42,17 @@ const SideMenu = () => {
             {
                 text: "Owned",
                 icon: <RadioButtonCheckedIcon />,
-                onClick: () => { }
+                path: ""
             },
             {
                 text: "Playlist",
                 icon: <AlbumIcon />,
-                onClick: () => { }
+                path: ""
             },
             {
                 text: "Favorites",
                 icon: <FavoriteIcon />,
-                onClick: () => { }
+                path: ""
             },
         ],
         []
@@ -79,9 +80,10 @@ const SideMenu = () => {
             width: '100%',
             justifyContent: 'center',
             paddingLeft: '25px'
+            
         },
         drawerIcon: {
-            color: '#8D9295',
+            color: 'inherit',
             minWidth: '35px'
         },
         subtitleMenu: {
@@ -107,7 +109,7 @@ const SideMenu = () => {
             PaperProps={{ sx: { backgroundColor: dark, color: gray } }}
             sx={{
                 flexShrink: 0,
-                [`& .MuiDrawer-paper`]: { width: { xs: '10vw', md: '14vw' }, boxSizing: 'border-box' }
+                [`& .MuiDrawer-paper`]: { width: { xs: '50px', md: '200px' }, boxSizing: 'border-box' }
             }}
         >
             <DrawerHeader>
@@ -123,9 +125,11 @@ const SideMenu = () => {
             <List>
                 {MenuButtons.map((button, index) => (
                     <ListItemButton
+                        selected={button.path === pathname}
                         key={`${button.text}-${index}`}
-                        onClick={button.onClick}
+                        onClick={() => navigate(button.path)}
                         sx={styles.drawerItem}
+                        className='MyListItemButton'
                     >
                         <ListItemIcon sx={styles.drawerIcon}>{button.icon}</ListItemIcon>
                         <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }}>{button.text}</Typography>} sx={{ display: { xs: 'none', md: 'flex' } }} />
@@ -138,8 +142,9 @@ const SideMenu = () => {
                 {LibraryButtons.map((button, index) => (
                     <ListItemButton
                         key={`${button.text}-${index}`}
-                        onClick={button.onClick}
+                        onClick={() => navigate(button.path)}
                         sx={styles.drawerItem}
+                        className='MyListItemButton'
                     >
                         <ListItemIcon sx={styles.drawerIcon}>{button.icon}</ListItemIcon>
                         <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }}>{button.text}</Typography>} sx={{ display: { xs: 'none', md: 'flex' } }} />
