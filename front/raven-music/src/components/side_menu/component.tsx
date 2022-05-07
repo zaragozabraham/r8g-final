@@ -42,12 +42,12 @@ const SideMenu = () => {
             {
                 text: "Owned",
                 icon: <RadioButtonCheckedIcon />,
-                path: ""
+                path: "/ownedsongs"
             },
             {
                 text: "Playlist",
                 icon: <AlbumIcon />,
-                path: ""
+                path: "/playlists"
             },
             {
                 text: "Favorites",

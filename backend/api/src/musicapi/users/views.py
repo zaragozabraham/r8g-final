@@ -101,7 +101,7 @@ class LoginView(APIView):
         response.data = {
             'id': user.id,
             'email': user.email,
-            'type': user.type
+            'mode': user.mode
         }
         return response
 

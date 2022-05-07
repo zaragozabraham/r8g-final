@@ -22,3 +22,8 @@ class AlbumSerializer(serializers.ModelSerializer):
             'ownedAlbumsID',
             'orderAlbumID'
             ]
+        extra_kwargs = {
+            'ownedAlbumsID': {'required': False},
+            'orderAlbumID': {'required': False},
+        }
+        depth = 1

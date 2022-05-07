@@ -36,11 +36,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'email', 'mode', 'addresses', 'ownedSongsUser', 'userPlaylist', 'ownedAlbumsUser', 'userOrders', 'groups']
+        fields = ['id', 'username', 'password', 'email', 'mode', 'is_staff', 'addresses', 'ownedSongsUser', 'userPlaylist', 'ownedAlbumsUser', 'userOrders', 'groups']
          # Changes password to write only, user never be able to access it
         extra_kwargs = {
             'email': {'required': True},
             'password': {'write_only': True},
+            'is_staff': {'required': False},
             'ownedSongsUser': {'required': False},
             'userPlaylist': {'required': False},
             'ownedAlbumsUser': {'required': False},

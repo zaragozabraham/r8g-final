@@ -8,6 +8,8 @@ import { Box } from '@mui/material';
 import { Styles } from './theme/types';
 import { useMemo } from 'react';
 import HeaderNavBar from './components/navbar/component';
+import OwnedView from './views/owned/component';
+import PlaylistsView from './views/playlists/component';
 
 const App = () => {
   const location = useLocation();
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/" element={<DiscoverView />} />
           <Route path="/albums" element={<AlbumsView />} />
           <Route path="/songs" element={<SongsView />} />
+          <Route path="/ownedsongs" element={<OwnedView />} />
+          <Route path="/playlists" element={<PlaylistsView />} />
         </Routes>
       </Box>
     </Box>

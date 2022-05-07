@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, IconButton, InputAdornment, Menu, MenuItem, styled, TextField, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, IconButton, InputAdornment, Menu, MenuItem, TextField, Toolbar, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useState } from 'react';

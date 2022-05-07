@@ -1,0 +1,106 @@
+[
+    {
+        "genres": [
+            {
+                "name": "pop"
+            },
+            {
+                "name": "rock"
+            },
+            {
+                "name": "hip-hop"
+            },
+            {
+                "name": "synthpop"
+            },
+            {
+                "name": "pop rock"
+            },
+            {
+                "name": "trap"
+            }
+        ]
+    },
+    {
+        "artists":[
+            {
+                "name": "Belanova",
+                "last_name": "",
+                "nationality": "Mexican",
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950943/artists/belanova_hwqk0g.jpg"
+            },
+            {
+                "name": "Dua",
+                "last_name": "Lipa",
+                "nationality": "British",
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651951275/artists/dua-lipa_z31eqg.jpg"
+            },
+            {
+                "name": "Kanye",
+                "last_name": "West",
+                "nationality": "United States of America",
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950942/artists/kanye-west_k4ag24.jpg"
+            },
+            {
+                "name": "Bad Bunny",
+                "last_name": "",
+                "nationality": "Puerto Rican",
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651951229/artists/bad-bunny_v8bv9g.jpg"
+            }
+        ]
+    },
+    {
+        "albums": [
+            {
+                "name": "X100PRE",
+                "releaseDate": "2020-10-10",
+                "single": false,
+                "physicalPrice": 300,
+                "digitalPrice": 270,
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651951434/albums/x100pre_xsm4it.webp",
+                "genres": "",
+                "artists": ""
+            },
+            {
+                "name": "Eazy",
+                "releaseDate": "2020-10-10",
+                "single": true,
+                "physicalPrice": 300,
+                "digitalPrice": 270,
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950962/albums/eazy_flnklt.png",
+                "genres": "",
+                "artists": ""
+            },
+            {
+                "name": "Graduation",
+                "releaseDate": "2020-10-10",
+                "single": false,
+                "physicalPrice": 300,
+                "digitalPrice": 270,
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950962/albums/graduation_gnq7j5.jpg",
+                "genres": "",
+                "artists": ""
+            },
+            {
+                "name": "Fantasia Pop",
+                "releaseDate": "2020-10-10",
+                "single": false,
+                "physicalPrice": 300,
+                "digitalPrice": 270,
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950962/albums/fantasia_pop_wjdlo7.webp",
+                "genres": "",
+                "artists": ""
+            },
+            {
+                "name": "Future Nostalgia",
+                "releaseDate": "2020-10-10",
+                "single": false,
+                "physicalPrice": 300,
+                "digitalPrice": 270,
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950961/albums/futureNostalgia_gtbqbi.jpg",
+                "genres": "",
+                "artists": ""
+            }
+        ]
+    }
+]

@@ -2,9 +2,11 @@ import { Box, Button, Typography } from '@mui/material';
 import { theme } from '../../../theme/theme';
 import { Styles } from '../../../theme/types';
 
-const AlbumCard = () => {
+const AlbumCard = ({album}) => {
+    
     const styles: Styles = {
         imgContainer: {
+            flexShrink: '0',
             marginTop: '10px',
             width: { xs: '150px', md: '200px' },
             height: { xs: '150px', md: '200px' },
@@ -40,13 +42,13 @@ const AlbumCard = () => {
     }
     return (
         <Box sx={styles.imgContainer}>
-            <img style={imgStyle} src='https://www.sanborns.com.mx/imagenes-sanborns-ii/1200/190295286101.jpg' alt={`album-cover`} />
+            <img style={imgStyle} src={`${album.image}`} alt={`album-cover`} />
             <Box sx={styles.bottomData}>
                 <Button variant='text' sx={styles.textButton}>
-                    <Typography sx={styles.mainText}>Future Nostalgia</Typography>
+                    <Typography sx={styles.mainText}>{album.name}</Typography>
                 </Button>
                 <Button variant='text' sx={styles.textButton}>
-                    <Typography sx={styles.secondaryText}>Dua Lipa</Typography>
+                    <Typography sx={styles.secondaryText}>{`${album.artists.name} ${album.artists.last_name}`}</Typography>
                 </Button>
             </Box>
         </Box>
