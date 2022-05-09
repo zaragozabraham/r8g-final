@@ -10,6 +10,7 @@ import { useMemo } from 'react';
 import HeaderNavBar from './components/navbar/component';
 import OwnedView from './views/owned/component';
 import PlaylistsView from './views/playlists/component';
+import AlbumView from './views/album/component';
 
 const App = () => {
   const location = useLocation();
@@ -36,9 +37,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<DiscoverView />} />
           <Route path="/albums" element={<AlbumsView />} />
+          <Route path="/album/:albumId" element={<AlbumView />} />
           <Route path="/songs" element={<SongsView />} />
           <Route path="/ownedsongs" element={<OwnedView />} />
-          <Route path="/playlists" element={<PlaylistsView />} />
+          <Route path="/playlist" element={<PlaylistsView />} />
         </Routes>
       </Box>
     </Box>

@@ -18,3 +18,7 @@
 .MenuList {
     background-color: #2B1E22;
 }
+
+.MuiTableCell-root, .MuiTableCell-body {
+    border-color: #8c929568 !important;
+}

@@ -11,4 +11,4 @@ class SongSerializer(serializers.ModelSerializer):
             'playlistSongID':{'required': False},
             'orderSongID':{'required': False}
             }
-        depth = 1
+        # depth = 1

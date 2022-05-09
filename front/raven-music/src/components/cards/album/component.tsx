@@ -1,9 +1,21 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, ButtonBase, Typography } from '@mui/material';
 import { theme } from '../../../theme/theme';
 import { Styles } from '../../../theme/types';
+import { useDispatch } from 'react-redux';
+import { albumSelector, setSelectedAlbum } from '../../../features/musicSlice';
+import { useAppSelector } from '../../../app/hooks';
+import { useNavigate } from 'react-router-dom';
 
-const AlbumCard = ({album}) => {
-    
+const AlbumCard = ({ album }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const albumData = useAppSelector(albumSelector);
+
+    const selectAlbum = (data, id) => {
+        dispatch(setSelectedAlbum(data));
+        navigate(`/album/${id}`);
+    }
+
     const styles: Styles = {
         imgContainer: {
             flexShrink: '0',
@@ -31,7 +43,11 @@ const AlbumCard = ({album}) => {
             color: theme.palette.text.secondary,
             fontSize: { xs: '8px', md: '9px' },
             padding: '0px'
-        }
+        },
+        buttonImg: {
+            width: { xs: '150px', md: '200px' },
+            height: { xs: '150px', md: '200px' },
+        },
     }
 
     const imgStyle = {
@@ -40,9 +56,17 @@ const AlbumCard = ({album}) => {
         borderRadius: '10px',
         boxShadow: '0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075)'
     }
+
     return (
         <Box sx={styles.imgContainer}>
-            <img style={imgStyle} src={`${album.image}`} alt={`album-cover`} />
+            <ButtonBase
+                focusRipple
+                key={'x'}
+                onClick={() => selectAlbum(album, album.id)}
+                sx={ styles.buttonImg }
+            >
+                <img style={imgStyle} src={`${album.image}`} alt={`album-cover`} />
+            </ButtonBase>
             <Box sx={styles.bottomData}>
                 <Button variant='text' sx={styles.textButton}>
                     <Typography sx={styles.mainText}>{album.name}</Typography>

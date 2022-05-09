@@ -11,6 +11,7 @@ import AlbumIcon from "@mui/icons-material/Album";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Raven from '../../raven.svg';
 
 const SideMenu = () => {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ const SideMenu = () => {
             {
                 text: "Playlist",
                 icon: <AlbumIcon />,
-                path: "/playlists"
+                path: "/playlist"
             },
             {
                 text: "Favorites",
@@ -73,14 +74,14 @@ const SideMenu = () => {
             marginTop: '15px',
             marginBottom: '25px',
             color: 'white',
-            display: { xs: 'flex', md: 'none' }
+            display: { xs: 'none', md: 'none' }
         },
         drawerItem: {
             display: 'flex',
             width: '100%',
             justifyContent: 'center',
             paddingLeft: '25px'
-            
+
         },
         drawerIcon: {
             color: 'inherit',
@@ -93,13 +94,20 @@ const SideMenu = () => {
         }
     }
 
+    const imgStyle = {
+        width: '25px',
+        height: '25px',
+        padding: '17px 5px',
+        fill: 'white'
+    }
+
     const dark = theme.palette.primary.dark;
     const gray = theme.palette.text.secondary;
 
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'flex',
         textAlign: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }));
 
     return (
@@ -113,11 +121,9 @@ const SideMenu = () => {
             }}
         >
             <DrawerHeader>
+                <img className='RavenLogo' style={imgStyle} src={Raven} alt='Raven Logo' />
                 <Typography sx={styles.app_name}>
                     Raven Music
-                </Typography>
-                <Typography sx={styles.app_name_xs}>
-                    RM
                 </Typography>
             </DrawerHeader>
             <Divider />

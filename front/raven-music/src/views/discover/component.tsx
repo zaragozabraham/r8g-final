@@ -27,7 +27,7 @@ const DiscoverView = () => {
   }
 
   const scrollRef = useHorizontalScroll();
-  // const something = [1, 2, 3, 4, 5, 6, 7, 8]
+  // ADD a filter to only render the newest 6 albums & artists
 
   return (
     <Box sx={{ height: '100%', p: { xs: 2, md: 4 }, width: 'available' }}>

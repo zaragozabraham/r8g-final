@@ -1,10 +1,13 @@
 from rest_framework import serializers
 from .models import *
+from musicapi.genres.serializers import GenreSerializer
+from musicapi.artists.serializers import ArtistSerializer
+from musicapi.genres.models import Genre
+from musicapi.artists.models import Artist
+import json
 
 class AlbumSerializer(serializers.ModelSerializer):
-    # userAlbums = serializers.StringRelatedField(many=True, read_only=True)
     songsAlbum = serializers.StringRelatedField(many=True, read_only=True)
-    # albumGenres = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Album
         fields = [
