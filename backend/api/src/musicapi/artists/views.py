@@ -7,4 +7,4 @@ from django.shortcuts import redirect
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all().order_by('name')
     serializer_class = ArtistSerializer
-    permission_classes = []
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

@@ -6,7 +6,7 @@ import { Album } from "../models/album";
 export const getAlbums = () => async (dispatch: AppDispatch) => {
   try {
     dispatch(setLoading(true));
-    const response = await fetch("http://3.218.67.164:9002/albums/");
+    const response = await fetch("/albums/");
 
     if (response.status !== 200) return "";
 

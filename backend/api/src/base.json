@@ -22,7 +22,7 @@
         ]
     },
     {
-        "artists":[
+        "artists": [
             {
                 "name": "Belanova",
                 "last_name": "",
@@ -46,6 +46,12 @@
                 "last_name": "",
                 "nationality": "Puerto Rican",
                 "image": "https://res.cloudinary.com/ravendata/image/upload/v1651951229/artists/bad-bunny_v8bv9g.jpg"
+            },
+            {
+                "name": "Harry",
+                "last_name": "Styles",
+                "nationality": "British",
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1652070665/artists/Harry-Styles_fxiave.jpg"
             }
         ]
     },
@@ -53,53 +59,93 @@
         "albums": [
             {
                 "name": "X100PRE",
-                "releaseDate": "2020-10-10",
+                "releaseDate": "2018-12-24",
                 "single": false,
+                "physicalStock": 200,
                 "physicalPrice": 300,
                 "digitalPrice": 270,
                 "image": "https://res.cloudinary.com/ravendata/image/upload/v1651951434/albums/x100pre_xsm4it.webp",
-                "genres": "",
-                "artists": ""
+                "genres": {
+                    "id": ""
+                },
+                "artists": {
+                    "id": ""
+                }
             },
             {
                 "name": "Eazy",
-                "releaseDate": "2020-10-10",
+                "releaseDate": "2022-01-16",
                 "single": true,
+                "physicalStock": 200,
                 "physicalPrice": 300,
                 "digitalPrice": 270,
                 "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950962/albums/eazy_flnklt.png",
-                "genres": "",
-                "artists": ""
+                "genres": {
+                    "id": ""
+                },
+                "artists": {
+                    "id": ""
+                }
             },
             {
                 "name": "Graduation",
-                "releaseDate": "2020-10-10",
+                "releaseDate": "2007-11-09",
                 "single": false,
+                "physicalStock": 200,
                 "physicalPrice": 300,
                 "digitalPrice": 270,
                 "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950962/albums/graduation_gnq7j5.jpg",
-                "genres": "",
-                "artists": ""
+                "genres": {
+                    "id": ""
+                },
+                "artists": {
+                    "id": ""
+                }
             },
             {
                 "name": "Fantasia Pop",
-                "releaseDate": "2020-10-10",
+                "releaseDate": "2007-10-09",
                 "single": false,
+                "physicalStock": 200,
                 "physicalPrice": 300,
                 "digitalPrice": 270,
                 "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950962/albums/fantasia_pop_wjdlo7.webp",
-                "genres": "",
-                "artists": ""
+                "genres": {
+                    "id": ""
+                },
+                "artists": {
+                    "id": ""
+                }
             },
             {
                 "name": "Future Nostalgia",
-                "releaseDate": "2020-10-10",
+                "releaseDate": "2020-03-27",
                 "single": false,
+                "physicalStock": 200,
                 "physicalPrice": 300,
                 "digitalPrice": 270,
                 "image": "https://res.cloudinary.com/ravendata/image/upload/v1651950961/albums/futureNostalgia_gtbqbi.jpg",
-                "genres": "",
-                "artists": ""
+                "genres": {
+                    "id": ""
+                },
+                "artists": {
+                    "id": ""
+                }
+            },
+            {
+                "name": "As It Was",
+                "releaseDate": "2022-04-01",
+                "single": true,
+                "physicalStock": 200,
+                "physicalPrice": 300,
+                "digitalPrice": 270,
+                "image": "https://res.cloudinary.com/ravendata/image/upload/v1652070630/albums/As-It-Was_yqli1o.webp",
+                "genres": {
+                    "id": ""
+                },
+                "artists": {
+                    "id": ""
+                }
             }
         ]
     }

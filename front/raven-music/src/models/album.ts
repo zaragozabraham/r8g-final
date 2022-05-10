@@ -12,7 +12,7 @@ export interface Album {
     digitalPrice: number;
     image: string;
     genres: Genre;
-    artists: Artist[];
+    artists: Artist;
     songsAlbum?: Song[];
     ownedAlbumsID?: string[];
     orderAlbumID?: string[];

@@ -16,7 +16,7 @@ code {
 }
 
 ::-webkit-scrollbar {
-  height: 3px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {

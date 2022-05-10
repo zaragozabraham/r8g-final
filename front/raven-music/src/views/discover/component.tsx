@@ -3,17 +3,20 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useAppSelector } from '../../app/hooks'
 import AlbumCard from '../../components/cards/album/component'
-import { albumsSelector } from '../../features/musicSlice'
+import ArtistCard from '../../components/cards/artist/component'
+import { albumsSelector, artistsSelector } from '../../features/musicSlice'
 import { getAlbums } from '../../services/album'
-import { useHorizontalScroll } from '../../services/scroll/service'
+import { getArtists } from '../../services/artists'
 import { Styles } from '../../theme/types'
 
 const DiscoverView = () => {
   const dispatch = useDispatch();
   const albums = useAppSelector(albumsSelector);
+  const artists = useAppSelector(artistsSelector);
 
   useEffect(() => {
     dispatch(getAlbums());
+    dispatch(getArtists());
   }, [dispatch]);
 
   const styles: Styles = {
@@ -26,7 +29,6 @@ const DiscoverView = () => {
     }
   }
 
-  const scrollRef = useHorizontalScroll();
   // ADD a filter to only render the newest 6 albums & artists
 
   return (
@@ -39,9 +41,17 @@ const DiscoverView = () => {
       </Box>
       <Box sx={{ margin: '15px 0', width: '100%' }}>
         <Typography variant='h6' color='white'>What's New</Typography>
-        <Box ref={scrollRef} sx={styles.albumSlider}>
+        <Box sx={styles.albumSlider}>
           {albums.map((album, index) => (
             <AlbumCard {...album} album={album} key={`album-${album.id}`}/>
+          ))}
+        </Box>
+      </Box>
+      <Box sx={{ margin: '15px 0', width: '100%' }}>
+        <Typography variant='h6' color='white'>Featured Artists</Typography>
+        <Box sx={styles.albumSlider}>
+          {artists.map((artist, index) => (
+            <ArtistCard {...artist} artist={artist} key={`album-${artist.id}`}/>
           ))}
         </Box>
       </Box>

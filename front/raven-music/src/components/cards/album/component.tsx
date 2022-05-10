@@ -2,14 +2,12 @@ import { Box, Button, ButtonBase, Typography } from '@mui/material';
 import { theme } from '../../../theme/theme';
 import { Styles } from '../../../theme/types';
 import { useDispatch } from 'react-redux';
-import { albumSelector, setSelectedAlbum } from '../../../features/musicSlice';
-import { useAppSelector } from '../../../app/hooks';
+import { setSelectedAlbum } from '../../../features/musicSlice';
 import { useNavigate } from 'react-router-dom';
 
 const AlbumCard = ({ album }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const albumData = useAppSelector(albumSelector);
 
     const selectAlbum = (data, id) => {
         dispatch(setSelectedAlbum(data));
@@ -36,12 +34,12 @@ const AlbumCard = ({ album }) => {
         mainText: {
             fontWeight: 'bold',
             color: 'white',
-            fontSize: { xs: '9px', md: '11px' },
+            fontSize: { xs: '9px', md: '12px' },
             padding: '0px'
         },
         secondaryText: {
             color: theme.palette.text.secondary,
-            fontSize: { xs: '8px', md: '9px' },
+            fontSize: { xs: '8px', md: '10px' },
             padding: '0px'
         },
         buttonImg: {
