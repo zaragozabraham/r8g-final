@@ -148,5 +148,46 @@
                 }
             }
         ]
+    },
+    {
+        "songs": [
+            {
+                "id": "29e1f967-863c-42de-8157-4f3087926136",
+                "name": "NI BIEN NI MAL",
+                "duration": "00:03:56",
+                "releaseDate": "2018-02-12",
+                "audioFile": "file",
+                "digitalPrice": 30.0,
+                "artists": "c448914c-2e7c-4ba2-a618-a114157903fd",
+                "album": "d017247f-8017-4af8-9b92-817b2ed10301"
+            },
+            {
+                "name": "200 Mph",
+                "duration": "2:50",
+                "releaseDate": "2018-12-24",
+                "audioFile": "file",
+                "digitalPrice": 30,
+                "artists": "c448914c-2e7c-4ba2-a618-a114157903fd",
+                "album": "d017247f-8017-4af8-9b92-817b2ed10301"
+            },
+            {
+                "name": "",
+                "duration": "",
+                "releaseDate": "2018-12-24",
+                "audioFile": "",
+                "digitalPrice": 30,
+                "artists": "",
+                "album": ""
+            },
+            {
+                "name": "",
+                "duration": "",
+                "releaseDate": "2018-12-24",
+                "audioFile": "",
+                "digitalPrice": 30,
+                "artists": "",
+                "album": ""
+            }
+        ]
     }
 ]
