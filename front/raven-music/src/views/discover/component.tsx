@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useAppSelector } from '../../app/hooks'
 import AlbumCard from '../../components/cards/album/component'
 import ArtistCard from '../../components/cards/artist/component'
+import { AuthSelector } from '../../features/authSlice'
 import { albumsSelector, artistsSelector } from '../../features/musicSlice'
 import { getAlbums } from '../../services/album'
 import { getArtists } from '../../services/artists'
@@ -13,10 +14,12 @@ const DiscoverView = () => {
   const dispatch = useDispatch();
   const albums = useAppSelector(albumsSelector);
   const artists = useAppSelector(artistsSelector);
+  const auth = useAppSelector(AuthSelector);
 
   useEffect(() => {
     dispatch(getAlbums());
     dispatch(getArtists());
+    // console.log(auth);
   }, [dispatch]);
 
   const styles: Styles = {

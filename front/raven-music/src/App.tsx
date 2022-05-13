@@ -11,6 +11,7 @@ import HeaderNavBar from './components/navbar/component';
 import OwnedView from './views/owned/component';
 import PlaylistsView from './views/playlists/component';
 import AlbumView from './views/album/component';
+import LoginView from './views/login/component';
 
 const App = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const App = () => {
         <HeaderNavBar />
         <Routes>
           <Route path="/" element={<DiscoverView />} />
+          <Route path='/login' element={<LoginView />} />
           <Route path="/albums" element={<AlbumsView />} />
           <Route path="/album/:albumId" element={<AlbumView />} />
           <Route path="/songs" element={<SongsView />} />

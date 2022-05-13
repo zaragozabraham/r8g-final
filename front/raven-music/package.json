@@ -17,6 +17,9 @@
     "@types/node": "^17.0.25",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.2",
+    "@types/yup": "^0.29.13",
+    "formik": "^2.2.9",
+    "js-sha512": "^0.8.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^7.2.8",
@@ -25,7 +28,8 @@
     "react-scroll-horizontal": "^1.6.6",
     "styled-components": "^5.3.5",
     "typescript": "^4.1.5",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
