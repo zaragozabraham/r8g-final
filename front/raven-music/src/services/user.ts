@@ -1,6 +1,7 @@
 import { AppDispatch } from "../app/store";
 import { authState, logout, setUser } from "../features/authSlice";
 import { setLoading } from "../features/loaderSlice";
+import { User } from "../models/user";
 import { GetTokenDTO, LoginDTO, RegisterDTO } from "../views/login/form";
 
 export const fetchLogin = (user: LoginDTO) => async (dispatch: AppDispatch) => {
@@ -53,7 +54,7 @@ export const fetchToken = (user: GetTokenDTO) => async (dispatch: AppDispatch) =
         const data = await res.json();
         // console.log(data);
 
-        const actualUser: authState = {
+        const actualUser: User = {
             id: user.id,
             username: user.username,
             mode: parseInt(user.mode),
@@ -63,7 +64,6 @@ export const fetchToken = (user: GetTokenDTO) => async (dispatch: AppDispatch) =
         }
 
         // console.log(actualUser);
-        const something = await 
         dispatch(setUser(actualUser));
     } catch (err) {
         throw err;
@@ -82,9 +82,6 @@ export const createUser = (user: RegisterDTO) => async (dispatch: AppDispatch) =
         });
 
         if (response.status !== 200) return '';
-
-        const data = await response.json();
-        // console.log(data);
 
     } catch (err) {
         throw err;

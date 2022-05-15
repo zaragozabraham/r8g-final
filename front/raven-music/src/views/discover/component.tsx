@@ -19,8 +19,7 @@ const DiscoverView = () => {
   useEffect(() => {
     dispatch(getAlbums());
     dispatch(getArtists());
-    // console.log(auth);
-  }, [dispatch]);
+  }, [dispatch, auth]);
 
   const styles: Styles = {
     albumSlider: {
@@ -62,4 +61,4 @@ const DiscoverView = () => {
   )
 }
 
-export default DiscoverView
+export default DiscoverView;

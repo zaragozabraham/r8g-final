@@ -7,7 +7,7 @@ from musicapi.artists.models import Artist
 import json
 
 class AlbumSerializer(serializers.ModelSerializer):
-    songsAlbum = serializers.StringRelatedField(many=True, read_only=True)
+    # songsAlbum = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Album
         fields = [

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { theme } from '../../theme/theme';
 import { Styles } from '../../theme/types';
 import { useNavigate } from 'react-router-dom';
-import { AuthSelector, loggedSelector } from '../../features/authSlice';
+import { AuthSelector, isAdminSelector, loggedSelector } from '../../features/authSlice';
 import { logoutUser } from '../../services/user';
 import { store } from '../../app/store';
 import { useAppSelector } from '../../app/hooks';
@@ -15,6 +15,7 @@ const HeaderNavBar = () => {
     const navigate = useNavigate();
     const userData = useAppSelector(AuthSelector);
     const isLogged = useAppSelector(loggedSelector);
+    const isAdmin = useAppSelector(isAdminSelector);
     
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     
@@ -65,6 +66,7 @@ const HeaderNavBar = () => {
             PaperProps={{ sx: { backgroundColor: theme.palette.primary.dark } }}
         >
             <MenuItem onClick={() => handleClick('profile')} sx={{ fontWeight: 'bold' }}>Profile</MenuItem>
+            <MenuItem onClick={() => handleClick('admin')} sx={{ fontWeight: 'bold', display: isAdmin ? 'flex' : 'none' }}>Admin</MenuItem>
             <MenuItem onClick={handleLogout} sx={{ fontWeight: 'bold' }}>Logout</MenuItem>
         </Menu>
     );

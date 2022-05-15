@@ -26,7 +26,7 @@ const LoginView = () => {
         if (logged) {
             return navigate("/");
         }
-    }, [logged]);
+    }, [logged, navigate]);
 
     const styles: Styles = {
         loginContainer: {

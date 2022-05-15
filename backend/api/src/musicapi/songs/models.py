@@ -35,5 +35,5 @@ class Song(models.Model):
     album = models.ForeignKey(Album, related_name='songsAlbum', on_delete=models.CASCADE)
     # Change to ManyToMany { artists }
         
-    def __str__(self):
-        return f'{self.id}'
+    # def __str__(self):
+    #     return f'{self.id}'
