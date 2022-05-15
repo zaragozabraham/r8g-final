@@ -35,6 +35,11 @@ const HeaderNavBar = () => {
         await store.dispatch(logoutUser(userData));
     };
 
+    const handleClick = ( route: string) => {
+        handleMenuClose();
+        navigate(`/${route}`);
+    }
+
     const styles: Styles = {
         signInButton: {
             color: 'white',
@@ -59,7 +64,7 @@ const HeaderNavBar = () => {
             onClose={handleMenuClose}
             PaperProps={{ sx: { backgroundColor: theme.palette.primary.dark } }}
         >
-            <MenuItem onClick={handleMenuClose} sx={{ fontWeight: 'bold' }}>Profile</MenuItem>
+            <MenuItem onClick={() => handleClick('profile')} sx={{ fontWeight: 'bold' }}>Profile</MenuItem>
             <MenuItem onClick={handleLogout} sx={{ fontWeight: 'bold' }}>Logout</MenuItem>
         </Menu>
     );

@@ -12,6 +12,7 @@ import OwnedView from './views/owned/component';
 import PlaylistsView from './views/playlists/component';
 import AlbumView from './views/album/component';
 import LoginView from './views/login/component';
+import ProfileView from './views/profile/component';
 
 const App = () => {
   const location = useLocation();
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/songs" element={<SongsView />} />
           <Route path="/ownedsongs" element={<OwnedView />} />
           <Route path="/playlist" element={<PlaylistsView />} />
+          <Route path="/profile" element={<ProfileView />} />
         </Routes>
       </Box>
     </Box>
