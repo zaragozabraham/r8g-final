@@ -6,6 +6,7 @@ import { theme } from '../../theme/theme';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useEffect, useState } from 'react';
 import AudioPlayerView from '../audioplayer/component';
+import { loggedSelector } from '../../features/authSlice';
 
 const main = theme.palette.primary.main;
 const columns = [
@@ -13,6 +14,7 @@ const columns = [
 ]
 const MusicTable = ({ data }) => {
     const currentSong = useAppSelector(songSelector);
+    const isLogged = useAppSelector(loggedSelector);
 
     const [showPlayer, setShowPlayer] = useState<Boolean>(false);
     const dispatch = useDispatch();
@@ -40,7 +42,7 @@ const MusicTable = ({ data }) => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell>
                                     <Box>
-                                        <IconButton sx={{ color: 'white'}}
+                                        <IconButton sx={{ color: 'white', display: isLogged ? 'bloc' : 'none' }}
                                         onClick={() => dispatch(setSelectedSong(song))}
                                         >
                                             <PlayArrowIcon />
