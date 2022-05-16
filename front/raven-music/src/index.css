@@ -31,3 +31,24 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #396697;
 }
+.rhap_container {
+  background-color: #426170;
+  color: black
+}
+
+.rhap_time {
+  color: white
+}
+
+.rhap_main-controls-button {
+  color: white
+}
+
+.rhap_container svg {
+  color: white
+}
+
+.rhap_header {
+  color: white;
+  text-align: center;
+}

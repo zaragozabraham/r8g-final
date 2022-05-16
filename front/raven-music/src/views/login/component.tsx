@@ -131,7 +131,7 @@ const LoginView = () => {
                                 </Typography>
                                 <Box sx={styles.inputContainer}>
                                     <TextField
-                                        error={Boolean(errors.email)}
+                                        error={Boolean(errors.username)}
                                         onChange={handleChange}
                                         label='Username'
                                         name='username'

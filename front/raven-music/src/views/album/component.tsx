@@ -23,7 +23,7 @@ const AlbumView = () => {
           {album.artists.name}
         </Typography>
         <Typography variant='h4' color='white' fontWeight='bold'>
-          X100PRE
+          {album.name}
         </Typography>
       </Box>
       <Divider sx={{ backgroundColor: gray }} />

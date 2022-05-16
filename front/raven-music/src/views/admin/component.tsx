@@ -1,6 +1,8 @@
 import { TabContext, TabPanel } from '@mui/lab';
 import { Box, Tab, Tabs, Toolbar, Typography } from '@mui/material';
 import { useState } from 'react';
+import CreateGenre from '../../forms/genre/create';
+import GenreTable from '../../forms/genre/table';
 import { theme } from '../../theme/theme';
 
 const AdminView = () => {
@@ -31,7 +33,10 @@ const AdminView = () => {
             </Box>
             <Box>
                 <TabPanel value="1">
-                    <Typography color='white'> Item One</Typography>
+                    <Box color='white' sx={{ gap: '20px' }}>
+                        <GenreTable />
+                        <CreateGenre />
+                    </Box>
                 </TabPanel>
                 <TabPanel value="2">
                 <Typography color='white'> 2</Typography>

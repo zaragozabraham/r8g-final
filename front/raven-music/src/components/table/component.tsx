@@ -1,27 +1,53 @@
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../app/hooks';
+import { setSelectedSong, songSelector } from '../../features/musicSlice';
 import { theme } from '../../theme/theme';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { useEffect, useState } from 'react';
+import AudioPlayerView from '../audioplayer/component';
 
 const main = theme.palette.primary.main;
 const columns = [
     'Title', 'Album', 'Artist', 'Duration'
 ]
 const MusicTable = ({ data }) => {
+    const currentSong = useAppSelector(songSelector);
+
+    const [showPlayer, setShowPlayer] = useState<Boolean>(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (currentSong !== undefined) {
+            setShowPlayer(true);
+        }
+    }, [currentSong])
+
     return (
         <Box sx={{ m: 'auto', height: '100%', width: '100%' }}>
-            <TableContainer sx={{ backgroundColor: main}}>
+            <TableContainer sx={{ backgroundColor: main }}>
                 <Table sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            { columns.map((column, index) => (
-                                <TableCell sx={{ fontWeight: 'bold'}}>{column}</TableCell>
+                            {columns.map((column, index) => (
+                                <TableCell sx={{ fontWeight: 'bold' }}>{column}</TableCell>
                             ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        { data.songsAlbum.map((song, index)=>(
+                        {data.songsAlbum.map((song, index) => (
                             <TableRow key={`${data.name}-${index}`}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell>{song.name}</TableCell>
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                <TableCell>
+                                    <Box>
+                                        <IconButton sx={{ color: 'white'}}
+                                        onClick={() => dispatch(setSelectedSong(song))}
+                                        >
+                                            <PlayArrowIcon />
+                                        </IconButton>
+                                        {song.name}
+                                    </Box>
+                                </TableCell>
                                 <TableCell>{data.name}</TableCell>
                                 <TableCell>{data.artists.name}</TableCell>
                                 <TableCell>{song.duration.slice(3)}</TableCell>
@@ -30,6 +56,8 @@ const MusicTable = ({ data }) => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            { showPlayer ? <AudioPlayerView /> : null }
+            
         </Box>
     )
 }

@@ -11,6 +11,7 @@ export interface MusicState {
     songs: Song[];
     genres: Genre[];
     album: Album;
+    song: Song;
 }
 
 const initialState: MusicState = {
@@ -18,7 +19,8 @@ const initialState: MusicState = {
     albums: [],
     songs: [],
     genres: [],
-    album: undefined
+    album: undefined,
+    song: undefined
 }
 
 export const MusicSlice = createSlice({
@@ -76,6 +78,9 @@ export const MusicSlice = createSlice({
         setSelectedAlbum: (state, action) => {
             state.album = action.payload;
         },
+        setSelectedSong: (state, action) => {
+            state.song = action.payload;
+        }
     }
 })
 
@@ -86,6 +91,7 @@ export const albumsSelector = (state: RootState) => musicSelector(state).albums;
 export const songsSelector = (state: RootState) => musicSelector(state).songs;
 export const genresSelector = (state: RootState) => musicSelector(state).genres;
 export const albumSelector = (state: RootState) => musicSelector(state).album;
+export const songSelector = (state: RootState) => musicSelector(state).song;
 
 export const {
     setArtists,
@@ -104,7 +110,8 @@ export const {
     addGenre,
     updateGenre,
     deleteGenre,
-    setSelectedAlbum
+    setSelectedAlbum,
+    setSelectedSong
 } = MusicSlice.actions;
 
 export default MusicSlice.reducer;
